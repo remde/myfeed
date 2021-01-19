@@ -1,4 +1,4 @@
-package main
+package common
 
 import (
 	"encoding/json"
@@ -7,7 +7,7 @@ import (
 	"net/http"
 )
 
-func getTitles(targetStruct, websiteUrl) {
+func GetTitles(targetStruct, websiteUrl) {
 	req, err := http.NewRequest("GET", websiteUrl, nil)
 	if err != nil {
 		log.Fatalln(err)
@@ -29,6 +29,4 @@ func getTitles(targetStruct, websiteUrl) {
 	}
 
 	json.Unmarshal(bytes, &targetStruct)
-
-	return targetStruct
 }

@@ -10,6 +10,6 @@ type LobsterTitles struct {
 }
 
 func getTitles() {
-	arrayOfTitles = new(LobsterTitles)
-	common.GetTitles(arrayOfTitles)
+	var arrayOfTitles []LobsterTitles
+	common.GetTitles(arrayOfTitles, "https://lobste.rs")
 }
