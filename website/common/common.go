@@ -2,16 +2,13 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
 )
 
-func main() {
-	var lobsterTitles []LobsterTitles
-
-	req, err := http.NewRequest("GET", "https://lobste.rs", nil)
+func getTitles(targetStruct, websiteUrl) {
+	req, err := http.NewRequest("GET", websiteUrl, nil)
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -31,7 +28,7 @@ func main() {
 		log.Fatalln(err)
 	}
 
-	json.Unmarshal(bytes, &lobsterTitles)
+	json.Unmarshal(bytes, &targetStruct)
 
-	fmt.Println(lobsterTitles)
+	return targetStruct
 }
