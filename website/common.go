@@ -1,4 +1,4 @@
-package common
+package website
 
 import (
 	"encoding/json"
@@ -7,8 +7,9 @@ import (
 	"net/http"
 )
 
-func GetTitles(targetStruct, websiteUrl) {
-	req, err := http.NewRequest("GET", websiteUrl, nil)
+//SetTitlesToStruct makes the GET request and places Titles to the target structure
+func SetTitlesToStruct(targetStruct, websiteURL string) {
+	req, err := http.NewRequest("GET", websiteURL, nil)
 	if err != nil {
 		log.Fatalln(err)
 	}
