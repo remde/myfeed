@@ -8,7 +8,7 @@ import (
 )
 
 //SetTitlesToStruct makes the GET request and places Titles to the target structure
-func SetTitlesToStruct(targetStruct, websiteURL string) {
+func SetTitlesToStruct(targetStruct interface{}, websiteURL string) {
 	req, err := http.NewRequest("GET", websiteURL, nil)
 	if err != nil {
 		log.Fatalln(err)
