@@ -1,4 +1,4 @@
-package lobsters
+package source
 
 import "github.com/remde/myfeed/website"
 
