@@ -1,10 +1,14 @@
 package cli
 
-import (
-	"bufio"
-	"os"
-)
+import "fmt"
 
-func Start() {
-	reader = bufio.NewReader(os.Stdin)
+//Start initializes the CLI app
+func Start(config interface{}) {
+	printTitlesToScreen(config)
+	//reader := bufio.NewReader(os.Stdin)
+	fmt.Println(config)
+}
+
+func printTitlesToScreen(config interface{}) {
+	//TODO
 }
