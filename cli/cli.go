@@ -1,6 +1,10 @@
 package cli
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/remde/myfeed/website"
+)
 
 //Start initializes the CLI app
 func Start(config interface{}) {
@@ -10,5 +14,9 @@ func Start(config interface{}) {
 }
 
 func printTitlesToScreen(config interface{}) {
-	//TODO
+	lobster := new([]website.LobsterTitle)
+	website.GetLobstersTitles(lobster)
+	reddit := new([]website.RedditTitle)
+	website.GetRedditTitles(reddit)
+	fmt.Println(reddit)
 }
