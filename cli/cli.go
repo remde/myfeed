@@ -14,9 +14,9 @@ func Start(config interface{}) {
 }
 
 func printTitlesToScreen(config interface{}) {
-	lobster := new([]website.LobsterTitle)
+	lobster := new([]website.RawLobsterStruct)
 	website.GetLobstersTitles(lobster)
-	reddit := new([]website.RedditTitle)
+	reddit := new([]website.RawRedditStruct)
 	website.GetRedditTitles(reddit)
 	fmt.Println(reddit)
 }

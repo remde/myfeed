@@ -1,13 +1,28 @@
 package website
 
-//RedditTitle is the structure for reddit.com website
-type RedditTitle struct {
-	Title string `json:"selftext"`
-	URL   string `json:"url"`
+//RawRedditStruct is the structure gotten from Reddit.com website
+type RawRedditStruct struct {
+	Data struct {
+		Children []struct {
+			Data struct {
+				Title       string  `json:"title"`
+				UpvoteRatio float64 `json:"upvote_ratio"`
+				NumComments int     `json:"num_comments"`
+				URL         string  `json:"url"`
+			} `json:"data,omitempty"`
+		}
+	}
+}
+
+type redditStruct struct {
+	Title       string
+	UpvoteRatio float64
+	NumComments int
+	URL         string
 }
 
 //GetRedditTitles stores titles and URLs to target struct
-func GetRedditTitles(arrayOfTitles *[]RedditTitle) {
+func GetRedditTitles(arrayOfTitles *[]RawRedditStruct) {
 	redditURL := "https://reddit.com/r/cscareerquestions.json"
 	SetTitlesToStruct(arrayOfTitles, redditURL)
 }
