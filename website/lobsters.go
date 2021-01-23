@@ -12,15 +12,6 @@ type RawLobsterStruct struct {
 	} `json:"submitter_user"`
 }
 
-type lobsterStruct struct {
-	Title        string
-	URL          string
-	Score        int
-	CommentCount int
-	CommentsURL  string
-	SubmiterUser string
-}
-
 //GetLobstersTitles stores titles and URLs to target struct
 func GetLobstersTitles(arrayOfTitles *[]RawLobsterStruct) {
 	lobstersURL := "https://lobste.rs"

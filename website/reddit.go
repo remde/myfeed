@@ -14,13 +14,6 @@ type RawRedditStruct struct {
 	}
 }
 
-type redditStruct struct {
-	Title       string
-	UpvoteRatio float64
-	NumComments int
-	URL         string
-}
-
 //GetRedditTitles stores titles and URLs to target struct
 func GetRedditTitles(arrayOfTitles *[]RawRedditStruct) {
 	redditURL := "https://reddit.com/r/cscareerquestions.json"

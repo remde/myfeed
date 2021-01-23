@@ -7,6 +7,15 @@ import (
 	"net/http"
 )
 
+type websiteStruct struct {
+	Title        string
+	URL          string
+	Score        int
+	CommentCount int
+	CommentsURL  string
+	SubmiterUser string
+}
+
 //SetTitlesToStruct makes the GET request and places Titles to the target structure
 func SetTitlesToStruct(targetStruct interface{}, websiteURL string) {
 	req, err := http.NewRequest("GET", websiteURL, nil)
