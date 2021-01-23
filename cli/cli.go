@@ -3,20 +3,23 @@ package cli
 import (
 	"fmt"
 
+	"github.com/remde/myfeed/parser"
 	"github.com/remde/myfeed/website"
 )
 
 //Start initializes the CLI app
-func Start(config interface{}) {
-	printTitlesToScreen(config)
+func Start(config *parser.Config) {
+	initWebsites(config)
 	//reader := bufio.NewReader(os.Stdin)
-	fmt.Println(config)
 }
 
-func printTitlesToScreen(config interface{}) {
-	lobster := new([]website.RawLobsterStruct)
-	website.GetLobstersTitles(lobster)
-	reddit := new([]website.RawRedditStruct)
-	website.GetRedditTitles(reddit)
-	fmt.Println(reddit)
+func initWebsites(config *parser.Config) {
+	switch configWebsite := config.Websites[0]; configWebsite {
+	case "lobsters":
+		website.InitLobsters(config.MaxLinks)
+	case "reddit":
+		website.InitReddit(config.MaxLinks)
+	default:
+		fmt.Println("This website is not yet supported: " + configWebsite)
+	}
 }
