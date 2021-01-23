@@ -7,7 +7,8 @@ import (
 	"net/http"
 )
 
-type websiteStruct struct {
+//WebsiteStruct is the generic structure for storing titles and URLs
+type WebsiteStruct struct {
 	Title        string
 	URL          string
 	Score        int
@@ -17,7 +18,7 @@ type websiteStruct struct {
 }
 
 //SetTitlesToStruct makes the GET request and places Titles to the target structure
-func SetTitlesToStruct(targetStruct interface{}, websiteURL string) {
+func setTitlesToStruct(websiteURL string, maxLinks string, targetStruct interface{}) {
 	req, err := http.NewRequest("GET", websiteURL, nil)
 	if err != nil {
 		log.Fatalln(err)
