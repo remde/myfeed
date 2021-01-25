@@ -18,7 +18,7 @@ type WebsiteStruct struct {
 }
 
 //SetTitlesToStruct makes the GET request and places Titles to the target structure
-func setTitlesToStruct(websiteURL string, maxLinks string, targetStruct interface{}) {
+func setTitlesToStruct(websiteURL string, targetStruct interface{}) {
 	req, err := http.NewRequest("GET", websiteURL, nil)
 	if err != nil {
 		log.Fatalln(err)

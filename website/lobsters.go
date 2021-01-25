@@ -18,6 +18,7 @@ type rawLobsterStruct struct {
 func InitLobsters(maxLinks int) {
 	lobstersURL := "https://lobste.rs"
 	maxLinksFilter := "$filter=" + fmt.Sprint(maxLinks)
+	lobstersURL = lobstersURL + maxLinksFilter
 	rawLobsterStruct := new([]rawLobsterStruct)
-	setTitlesToStruct(lobstersURL, maxLinksFilter, rawLobsterStruct)
+	setTitlesToStruct(lobstersURL, rawLobsterStruct)
 }

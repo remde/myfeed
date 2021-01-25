@@ -20,6 +20,7 @@ type rawRedditStruct struct {
 func InitReddit(maxLinks int) {
 	redditURL := "https://reddit.com/cscareerquestions.json"
 	maxLinksFilter := "$filter=" + fmt.Sprint(maxLinks)
+	redditURL = redditURL + maxLinksFilter
 	rawRedditStruct := new([]rawRedditStruct)
-	setTitlesToStruct(redditURL, maxLinksFilter, rawRedditStruct)
+	setTitlesToStruct(redditURL, rawRedditStruct)
 }
