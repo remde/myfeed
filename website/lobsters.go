@@ -1,9 +1,6 @@
 package website
 
-import "fmt"
-
-//RawLobsterStruct is the structure gotten from lobste.rs website
-type rawLobsterStruct struct {
+type rawLobsterStruct []struct {
 	Title         string `json:"title"`
 	URL           string `json:"url"`
 	Score         int    `json:"score"`
@@ -17,8 +14,8 @@ type rawLobsterStruct struct {
 //InitLobsters intializes Lobster structure and prints the titles to the CLI
 func InitLobsters(maxLinks int) {
 	lobstersURL := "https://lobste.rs"
-	maxLinksFilter := "$filter=" + fmt.Sprint(maxLinks)
+	maxLinksFilter := "" //placeholder
 	lobstersURL = lobstersURL + maxLinksFilter
-	rawLobsterStruct := new([]rawLobsterStruct)
+	rawLobsterStruct := new(rawLobsterStruct)
 	setTitlesToStruct(lobstersURL, rawLobsterStruct)
 }
