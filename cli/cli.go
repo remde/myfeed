@@ -13,12 +13,13 @@ func Start(config *config) {
 }
 
 func initWebsites(config *config) {
-	switch configWebsite := config.Websites[0]; configWebsite {
-	case "lobsters":
-		website.InitLobsters(config.MaxLinks)
-	case "reddit":
-		website.InitReddit(config.MaxLinks)
-	default:
-		fmt.Println("This website is not yet supported: " + configWebsite)
+	for _, chosenWebsite := range config.Websites {
+		if chosenWebsite == "lobsters" {
+			website.InitLobsters(config.MaxLinks)
+		} else if chosenWebsite == "reddit" {
+			website.InitReddit(config.MaxLinks)
+		} else {
+			fmt.Println("This website is not yet supported: " + chosenWebsite)
+		}
 	}
 }
