@@ -2,7 +2,6 @@ package website
 
 import "fmt"
 
-//RawRedditStruct is the structure gotten from Reddit.com website
 type rawRedditStruct struct {
 	Data struct {
 		Children []struct {
@@ -18,9 +17,10 @@ type rawRedditStruct struct {
 
 //InitReddit intializes Reddit structure and prints the titles to the CLI
 func InitReddit(maxLinks int) {
-	redditURL := "https://reddit.com/cscareerquestions.json"
-	maxLinksFilter := "$filter=" + fmt.Sprint(maxLinks)
+	redditURL := "https://reddit.com/r/cscareerquestions.json"
+	maxLinksFilter := "" //placeholder
 	redditURL = redditURL + maxLinksFilter
 	rawRedditStruct := new([]rawRedditStruct)
 	setTitlesToStruct(redditURL, rawRedditStruct)
+	fmt.Println(rawRedditStruct)
 }
