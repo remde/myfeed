@@ -21,10 +21,16 @@ func InitLobsters(maxLinks int) {
 	rawLobsterStruct := new([]rawLobsterStruct)
 	setTitlesToStruct(lobstersURL, rawLobsterStruct)
 	printTitlesToScreen(*rawLobsterStruct)
+	makeWebsiteStruct(*rawLobsterStruct)
 }
 
 func printTitlesToScreen(rawLobsterStruct []rawLobsterStruct) {
 	for i, article := range rawLobsterStruct {
 		fmt.Printf("%d: %s\n", i+1, article.Title)
 	}
+}
+
+func makeWebsiteStruct(rawLobsterStruct []rawLobsterStruct) *[]WebsiteStruct {
+	lobsterStruct := new([]WebsiteStruct)
+	return lobsterStruct
 }
