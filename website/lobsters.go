@@ -1,6 +1,8 @@
 package website
 
-type rawLobsterStruct []struct {
+import "fmt"
+
+type rawLobsterStruct struct {
 	Title         string `json:"title"`
 	URL           string `json:"url"`
 	Score         int    `json:"score"`
@@ -16,6 +18,13 @@ func InitLobsters(maxLinks int) {
 	lobstersURL := "https://lobste.rs"
 	maxLinksFilter := "" //placeholder
 	lobstersURL = lobstersURL + maxLinksFilter
-	rawLobsterStruct := new(rawLobsterStruct)
+	rawLobsterStruct := new([]rawLobsterStruct)
 	setTitlesToStruct(lobstersURL, rawLobsterStruct)
+	printTitlesToScreen(*rawLobsterStruct)
+}
+
+func printTitlesToScreen(rawLobsterStruct []rawLobsterStruct) {
+	for i, article := range rawLobsterStruct {
+		fmt.Printf("%d: %s\n", i+1, article.Title)
+	}
 }
