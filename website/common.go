@@ -9,12 +9,9 @@ import (
 
 //WebsiteStruct is the generic structure for storing titles and URLs
 type WebsiteStruct struct {
-	Title        string
-	URL          string
-	Score        int
-	CommentCount int
-	CommentsURL  string
-	SubmiterUser string
+	Index       int
+	URL         string
+	CommentsURL string
 }
 
 //SetTitlesToStruct makes the GET request and places Titles to the target structure
