@@ -1,7 +1,5 @@
 package website
 
-import "fmt"
-
 type rawRedditStruct struct {
 	Data struct {
 		Children []struct {
@@ -22,5 +20,4 @@ func InitReddit(maxLinks int) {
 	redditURL = redditURL + maxLinksFilter
 	rawRedditStruct := new([]rawRedditStruct)
 	setTitlesToStruct(redditURL, rawRedditStruct)
-	fmt.Println(rawRedditStruct)
 }
