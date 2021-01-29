@@ -14,23 +14,30 @@ type rawLobsterStruct struct {
 }
 
 //InitLobsters intializes Lobster structure and prints the titles to the CLI
-func InitLobsters(maxLinks int) {
+func InitLobsters(maxLinks int) []WebsiteStruct {
 	lobstersURL := "https://lobste.rs"
 	maxLinksFilter := "" //placeholder
 	lobstersURL = lobstersURL + maxLinksFilter
 	rawLobsterStruct := new([]rawLobsterStruct)
 	setTitlesToStruct(lobstersURL, rawLobsterStruct)
-	printTitlesToScreen(*rawLobsterStruct)
-	makeWebsiteStruct(*rawLobsterStruct)
+	printTitlesToScreen(*rawLobsterStruct, maxLinks)
+	return makeWebsiteStruct(*rawLobsterStruct, maxLinks)
 }
 
-func printTitlesToScreen(rawLobsterStruct []rawLobsterStruct) {
-	for i, article := range rawLobsterStruct {
-		fmt.Printf("%d: %s\n", i+1, article.Title)
+func printTitlesToScreen(rawLobsterStruct []rawLobsterStruct, maxLinks int) {
+	for i := 0; i <= maxLinks; i++ {
+		fmt.Printf("%d: %s\n", i+1, rawLobsterStruct[i].Title)
 	}
 }
 
-func makeWebsiteStruct(rawLobsterStruct []rawLobsterStruct) *[]WebsiteStruct {
-	lobsterStruct := new([]WebsiteStruct)
+func makeWebsiteStruct(rawLobsterStruct []rawLobsterStruct, maxLinks int) []WebsiteStruct {
+	lobsterStruct := []WebsiteStruct{}
+	for i := 0; i <= maxLinks; i++ {
+		article := WebsiteStruct{}
+		article.Index = i + 1
+		article.URL = rawLobsterStruct[i].URL
+		article.CommentsURL = rawLobsterStruct[i].CommentsURL
+		lobsterStruct = append(lobsterStruct, article)
+	}
 	return lobsterStruct
 }
