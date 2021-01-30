@@ -13,24 +13,26 @@ type rawLobsterStruct struct {
 	} `json:"submitter_user"`
 }
 
+type rawLobsterStructArr []rawLobsterStruct
+
 //InitLobsters intializes Lobster structure and prints the titles to the CLI
 func InitLobsters(maxLinks int) []WebsiteStruct {
 	lobstersURL := "https://lobste.rs"
 	maxLinksFilter := "" //placeholder
 	lobstersURL = lobstersURL + maxLinksFilter
-	rawLobsterStruct := new([]rawLobsterStruct)
+	rawLobsterStruct := new(rawLobsterStructArr)
 	setTitlesToStruct(lobstersURL, rawLobsterStruct)
-	printTitlesToScreen(*rawLobsterStruct, maxLinks)
-	return makeWebsiteStruct(*rawLobsterStruct, maxLinks)
+	rawLobsterStruct.printTitlesToScreen(maxLinks)
+	return rawLobsterStruct.makeWebsiteStruct(maxLinks)
 }
 
-func printTitlesToScreen(rawLobsterStruct []rawLobsterStruct, maxLinks int) {
+func (rawLobsterStruct rawLobsterStructArr) printTitlesToScreen(maxLinks int) {
 	for i := 0; i <= maxLinks; i++ {
 		fmt.Printf("%d: %s\n", i+1, rawLobsterStruct[i].Title)
 	}
 }
 
-func makeWebsiteStruct(rawLobsterStruct []rawLobsterStruct, maxLinks int) []WebsiteStruct {
+func (rawLobsterStruct rawLobsterStructArr) makeWebsiteStruct(maxLinks int) []WebsiteStruct {
 	lobsterStruct := []WebsiteStruct{}
 	for i := 0; i <= maxLinks; i++ {
 		article := WebsiteStruct{}
