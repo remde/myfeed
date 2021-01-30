@@ -19,7 +19,6 @@ type website interface {
 	makeWebsiteStruct() []WebsiteStruct
 }
 
-//SetTitlesToStruct makes the GET request and places Titles to the target structure
 func setTitlesToStruct(websiteURL string, targetStruct interface{}) {
 	req, err := http.NewRequest("GET", websiteURL, nil)
 	if err != nil {
