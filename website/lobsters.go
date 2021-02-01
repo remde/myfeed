@@ -16,13 +16,13 @@ type rawLobsterStruct struct {
 type rawLobsterStructArr []rawLobsterStruct
 
 //InitLobsters intializes Lobster structure and prints the titles to the CLI
-func InitLobsters(maxLinks int) []WebsiteStruct {
+func InitLobsters(maxLinks int) WebsiteTable {
 	lobstersURL := "https://lobste.rs"
 	rawLobsterStruct := new(rawLobsterStructArr)
 	setTitlesToStruct(lobstersURL, rawLobsterStruct)
 	rawLobsterStruct.printTitlesToScreen(maxLinks)
-	lobsterStruct := rawLobsterStruct.makeWebsiteStruct(maxLinks)
-	return lobsterStruct
+	lobsterStructTable := rawLobsterStruct.makeWebsiteStruct(maxLinks)
+	return lobsterStructTable
 }
 
 func (rawLobsterStruct rawLobsterStructArr) printTitlesToScreen(maxLinks int) {
@@ -31,14 +31,15 @@ func (rawLobsterStruct rawLobsterStructArr) printTitlesToScreen(maxLinks int) {
 	}
 }
 
-func (rawLobsterStruct rawLobsterStructArr) makeWebsiteStruct(maxLinks int) []WebsiteStruct {
+func (rawLobsterStruct rawLobsterStructArr) makeWebsiteStruct(maxLinks int) WebsiteTable {
+	var websiteTable WebsiteTable
 	lobsterStruct := []WebsiteStruct{}
 	for i := 0; i <= maxLinks; i++ {
 		article := WebsiteStruct{}
-		article.Index = i + 1
 		article.URL = rawLobsterStruct[i].URL
 		article.CommentsURL = rawLobsterStruct[i].CommentsURL
 		lobsterStruct = append(lobsterStruct, article)
+		websiteTable[i+1] = lobsterStruct
 	}
-	return lobsterStruct
+	return websiteTable
 }

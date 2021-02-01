@@ -9,14 +9,18 @@ import (
 
 //WebsiteStruct is the generic structure for storing titles and URLs
 type WebsiteStruct struct {
-	Index       int
 	URL         string
 	CommentsURL string
 }
 
+type websiteStructArr []WebsiteStruct
+
+//WebsiteTable is the structure that holds the website structure arrays indexed
+type WebsiteTable map[int]websiteStructArr
+
 type website interface {
 	printTitlesToScreen()
-	makeWebsiteStruct() []WebsiteStruct
+	makeWebsiteStruct() WebsiteTable
 }
 
 func setTitlesToStruct(websiteURL string, targetStruct interface{}) {
