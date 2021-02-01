@@ -33,7 +33,7 @@ func (rawLobsterStruct rawLobsterStructArr) printTitlesToScreen(maxLinks int) {
 
 func (rawLobsterStruct rawLobsterStructArr) makeWebsiteStruct(maxLinks int) WebsiteTable {
 	var websiteTable WebsiteTable
-	lobsterStruct := []WebsiteStruct{}
+	lobsterStruct := websiteStructArr{}
 	for i := 0; i <= maxLinks; i++ {
 		article := WebsiteStruct{}
 		article.URL = rawLobsterStruct[i].URL
