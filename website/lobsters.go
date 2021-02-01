@@ -18,12 +18,11 @@ type rawLobsterStructArr []rawLobsterStruct
 //InitLobsters intializes Lobster structure and prints the titles to the CLI
 func InitLobsters(maxLinks int) []WebsiteStruct {
 	lobstersURL := "https://lobste.rs"
-	maxLinksFilter := "" //placeholder
-	lobstersURL = lobstersURL + maxLinksFilter
 	rawLobsterStruct := new(rawLobsterStructArr)
 	setTitlesToStruct(lobstersURL, rawLobsterStruct)
 	rawLobsterStruct.printTitlesToScreen(maxLinks)
-	return rawLobsterStruct.makeWebsiteStruct(maxLinks)
+	lobsterStruct := rawLobsterStruct.makeWebsiteStruct(maxLinks)
+	return lobsterStruct
 }
 
 func (rawLobsterStruct rawLobsterStructArr) printTitlesToScreen(maxLinks int) {
