@@ -9,13 +9,9 @@ import (
 //Start initializes the CLI app
 func Start(config *config) {
 	lobstersTable := initWebsites(config)
-	fmt.Println("Enter number: ")
-	var index int
-	_, err := fmt.Scanf("%d", &index)
-	if err != nil {
-		fmt.Println("error")
-	}
-	fmt.Println(lobstersTable[index])
+	printChooseArticle()
+	articleURL := getArticleURL(lobstersTable)
+	openArticle(articleURL, config.Browser)
 }
 
 func initWebsites(config *config) website.WebsiteTable {
@@ -30,4 +26,8 @@ func initWebsites(config *config) website.WebsiteTable {
 		}
 	}
 	return lobstersTable
+}
+
+func openArticle(url string, browser string) {
+	//open article
 }
