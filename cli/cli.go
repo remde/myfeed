@@ -2,6 +2,9 @@ package cli
 
 import (
 	"fmt"
+	"log"
+	"os/exec"
+	"runtime"
 
 	"github.com/remde/myfeed/website"
 )
@@ -11,7 +14,7 @@ func Start(config *config) {
 	lobstersTable := initWebsites(config)
 	printChooseArticle()
 	articleURL := getArticleURL(lobstersTable)
-	openArticle(articleURL, config.Browser)
+	openArticle(articleURL)
 }
 
 func initWebsites(config *config) website.WebsiteTable {
@@ -28,6 +31,20 @@ func initWebsites(config *config) website.WebsiteTable {
 	return lobstersTable
 }
 
-func openArticle(url string, browser string) {
-	//open article
+func openArticle(url string) {
+	var err error
+
+	switch runtime.GOOS {
+	case "linux":
+		err = exec.Command("xdg-open", url).Start()
+	case "windows":
+		err = exec.Command("rundll32", "url.dll,FileProtocolHandler", url).Start()
+	case "darwin":
+		err = exec.Command("open", url).Start()
+	default:
+		err = fmt.Errorf("unsupported platform")
+	}
+	if err != nil {
+		log.Fatal(err)
+	}
 }
