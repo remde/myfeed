@@ -12,9 +12,9 @@ import (
 //Start initializes the CLI app
 func Start(config *config) {
 	lobstersTable := initWebsites(config)
-	printChooseArticle()
-	articleURL := getArticleURL(lobstersTable)
-	openArticle(articleURL)
+	articleURL, articleCommentsURL := getArticleURL(lobstersTable)
+	linkToOpen := chooseArticleOrComment(articleURL, articleCommentsURL)
+	openArticle(linkToOpen)
 }
 
 func initWebsites(config *config) website.WebsiteTable {
