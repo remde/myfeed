@@ -1,4 +1,6 @@
 # myfeed
-myfeed is a way to get your favorite reddit-like website news and articles (reddit, hackernews, lobsters) straight from your terminal.
+myfeed is a way to get your lobste.rs news and articles straight from your terminal.
 
-Work in progress.
+## Running the application
+- Clone this repository
+- `go run main.go`
