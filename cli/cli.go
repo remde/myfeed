@@ -12,9 +12,11 @@ import (
 //Start initializes the CLI app
 func Start(config *config) {
 	lobstersTable := initWebsites(config)
-	articleURL, articleCommentsURL := getArticleURL(lobstersTable)
-	linkToOpen := chooseArticleOrComment(articleURL, articleCommentsURL)
-	openArticle(linkToOpen)
+	for {
+		articleURL, articleCommentsURL := getArticleURL(lobstersTable)
+		linkToOpen := chooseArticleOrComment(articleURL, articleCommentsURL)
+		openArticle(linkToOpen)
+	}
 }
 
 //Placeholder: currently returning only lobstersTable
