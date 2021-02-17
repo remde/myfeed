@@ -6,6 +6,7 @@ type config struct {
 	Browser  string
 }
 
+//Placeholder: currently hardcoded
 //GetInitConfig parses the config.txt file in the root to obtain the user's default config
 func GetInitConfig() *config {
 	initConfig := new(config)

@@ -17,6 +17,7 @@ func Start(config *config) {
 	openArticle(linkToOpen)
 }
 
+//Placeholder: currently returning only lobstersTable
 func initWebsites(config *config) website.WebsiteTable {
 	lobstersTable := website.WebsiteTable{}
 	for _, chosenWebsite := range config.Websites {
