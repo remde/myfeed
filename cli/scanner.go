@@ -25,7 +25,6 @@ func chooseArticleOrComment(articleURL, articleCommentsURL string) string {
 	}
 	if option == 0 {
 		return articleURL
-	} else {
-		return articleCommentsURL
 	}
+	return articleCommentsURL
 }
