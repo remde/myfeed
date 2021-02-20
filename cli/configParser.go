@@ -6,9 +6,9 @@ type config struct {
 	Browser  string
 }
 
-//Placeholder: currently hardcoded
-//GetInitConfig parses the config.txt file in the root to obtain the user's default config
-func GetInitConfig() *config {
+//placeholder: currently hardcoded, should get and save to a "database"
+//file (json?) as configuration depending on user input
+func getInitConfig() *config {
 	initConfig := new(config)
 	initConfig.Websites = []string{"reddit", "lobsters"}
 	initConfig.MaxLinks = 5

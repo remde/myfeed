@@ -10,8 +10,9 @@ import (
 )
 
 //Start initializes the CLI app
-func Start(config *config) {
-	lobstersTable, lobstersArticles := initWebsites(config)
+func Start() {
+	initConfig := getInitConfig()
+	lobstersTable, lobstersArticles := initWebsites(initConfig)
 	for {
 		fmt.Println(lobstersArticles)
 		articleURL, articleCommentsURL := getArticleURL(lobstersTable)

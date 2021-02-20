@@ -5,6 +5,5 @@ import (
 )
 
 func main() {
-	initConfig := cli.GetInitConfig()
-	cli.Start(initConfig)
+	cli.Start()
 }
